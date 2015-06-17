@@ -1,0 +1,18 @@
+<h1>かーとの中身</h1>
+
+<table>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.cart %></td>
+        <td><%= link_to '詳細', cart_item %></td>
+        <td><%= link_to '編集', edit_cart_item_path(cart_item) %></td>
+        <td><%= link_to '削除', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cart item', new_cart_item_path %>

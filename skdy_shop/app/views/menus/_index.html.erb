@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Stocks</th>
+      <th>がぞう</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr class="menu_image" data-js-menu-click="" data-js-menu-id="<%= menu.id %>">
+        <td><%= menu.name %></td>
+        <td><%= menu.price %></td>
+        <td><%= menu.stocks %></td>
+        <td><img src="<%= menu.id %>.jpg"></td>
+        <td><%= link_to 'Show', menu %></td>
+        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
+        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
