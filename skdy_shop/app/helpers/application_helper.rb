@@ -1,29 +1,32 @@
 module ApplicationHelper
-  def icon_cart
-    b3_icon 'glyphicon-shopping-cart'
+  def icon_cart(str = '')
+    b3_icon 'glyphicon-shopping-cart', str
   end
-  def icon_pencil
-    b3_icon 'glyphicon-pencil'
+  def icon_pencil(str = '')
+    b3_icon 'glyphicon-pencil', str
   end
-  def icon_info
-    b3_icon 'glyphicon-info-sign'
+  def icon_info(str = '')
+    b3_icon 'glyphicon-info-sign', str
   end
-  def icon_list
-    b3_icon 'glyphicon-list'
+  def icon_list(str = '')
+    b3_icon 'glyphicon-list', str
   end
-  def icon_list2
-    b3_icon 'glyphicon-list-alt'
+  def icon_list2(str = '')
+    b3_icon 'glyphicon-list-alt', str
   end
-  def icon_left
-    b3_icon  'glyphicon-arrow-left'
+  def icon_left(str = '')
+    b3_icon  'glyphicon-arrow-left', str
   end
-  def icon_left2
-    b3_icon  'glyphicon-chevron-left'
+  def icon_left2(str = '')
+    b3_icon  'glyphicon-chevron-left', str
   end
-  def icon_delete
-    b3_icon 'glyphicon-remove-sign'
+  def icon_delete(str = '')
+    b3_icon 'glyphicon-remove-sign', str
   end
-  def b3_icon(icon_class)
-    sanitize "<i class='glyphicon #{icon_class}'></i>"
+  def icon_update(str = '')
+    b3_icon 'glyphicon-refresh', str
+  end
+  def b3_icon(icon_class, str = '')
+    sanitize "<span class='glyphicon #{icon_class}'>#{str}</span>"
   end
 end

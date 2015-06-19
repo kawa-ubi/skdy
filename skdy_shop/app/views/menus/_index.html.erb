@@ -7,7 +7,7 @@
         <span class="name"><%= menu.name %></span>
         <span class="price"><%= menu.display_price %></span>
         <span class="stocks"><%= menu.display_stocks %></span>
-        <div>
+        <div class="btn__container">
           <%= link_to icon_info + ' 詳しく見る', menu, class: "btn btn-primary btn-sm" %>
           <%= link_to icon_pencil + ' 編集', edit_menu_path(menu), class: "btn btn-success btn-sm" %>
           <%= link_to icon_cart + ' カートに入れる', cart_items_path(_cart_item), {class: 'btn btn-info btn-sm', method: :post} %>

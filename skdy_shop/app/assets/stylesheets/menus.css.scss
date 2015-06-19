@@ -31,5 +31,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .btn__container {
+    margin: 10px auto;
+  }
   @include menu_image;
 }
