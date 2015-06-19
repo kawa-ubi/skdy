@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Due:</strong>
+  <%= @todo.due %>
+</p>
+
+<p>
+  <strong>だれ？</strong>
+  <%= @todo.user.name %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @todo.task %>
+</p>
+
+<p>
+  <strong>めも:</strong>
+  <%= new_line @todo.memo %>
+</p>
+
+<%= link_to 'Edit', edit_todo_path(@todo) %> |
+<%= link_to 'Back', todos_path %>
