@@ -2,11 +2,24 @@
 <html>
 <head>
   <title>SkdyShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<nav class="navbar navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">血液型別ハンバーガーショップ</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to icon_list + ' メニュー', menus_path %></li>
+      <li><%= link_to icon_cart + ' カートを見る', cart_items_path %></li>
+    </ul>
+  </div>
+</nav>
 
 <%= yield %>
 

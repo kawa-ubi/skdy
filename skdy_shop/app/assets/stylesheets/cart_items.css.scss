@@ -1,3 +1,33 @@
 // Place all the styles related to the CartItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_mixins';
+
+.cart_info {
+  margin: 20px 10px 20px 0;
+  padding: 10px 0;
+  border-bottom: 1px dotted #eee;
+  width: auto;
+
+  .price {
+    color: black;
+    font-weight: bold;
+  }
+  .stocks {
+    margin-left: 10px;
+    color: #999;
+    font-size: 85%;
+    font-weight: normal;
+  }
+  .name {
+    color: #6a430a;
+    font-weight: bold;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 450px;
+  }
+  @include menu_image;
+}

@@ -1,25 +1,17 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Stocks</th>
-      <th>がぞう</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr class="menu_image" data-js-menu-click="" data-js-menu-id="<%= menu.id %>">
-        <td><%= menu.name %></td>
-        <td><%= menu.price %></td>
-        <td><%= menu.stocks %></td>
-        <td><img src="<%= menu.id %>.jpg"></td>
-        <td><%= link_to 'Show', menu %></td>
-        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="row list-inline">
+  <% image_size ||= 'img--m' %>
+  <% @menus.each do |menu| %>
+      <% _cart_item = {cart_item: {cart_id: 1, amount: 1, menu_id: menu.id}} %>
+      <li class="col-md-6 menu_info" data-js-menu-click="" data-js-menu-id="<%= menu.id %>">
+        <div class="img <%= image_size %>  <%= menu.image_css_class %>"></div>
+        <span class="name"><%= menu.name %></span>
+        <span class="price"><%= menu.display_price %></span>
+        <span class="stocks"><%= menu.display_stocks %></span>
+        <div>
+          <%= link_to icon_info + ' 詳しく見る', menu, class: "btn btn-primary btn-sm" %>
+          <%= link_to icon_pencil + ' 編集', edit_menu_path(menu), class: "btn btn-success btn-sm" %>
+          <%= link_to icon_cart + ' カートに入れる', cart_items_path(_cart_item), {class: 'btn btn-info btn-sm', method: :post} %>
+        </div>
+      </li>
+  <% end %>
+</ul>

@@ -1,19 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
-</p>
+<div class="menu_info">
+  <p>
+    <strong>名称：</strong>
+    <span class="name"><%= @menu.name %></span>
+  </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @menu.price %>
-</p>
+  <div class="menu_info">
+    <div class="img img--l <%= @menu.image_css_class %>"></div>
+  </div>
 
-<p>
-  <strong>Stocks:</strong>
-  <%= @menu.stocks %>
-</p>
+  <p>
+    <strong>価格：</strong>
+    <span class="price"><%= @menu.display_price %></span>
+  </p>
 
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+  <p class="stocks">
+    <strong>在庫：</strong>
+    <span class="stocks"><%= @menu.stocks %>個</span>
+  </p>
+
+  <%= link_to icon_pencil + ' 編集する', edit_menu_path(@menu), class: 'btn btn-success btn-xs' %>
+  <%= link_to icon_list + ' メニューリスト', menus_path, class: 'btn btn-primary btn-xs' %>
+
+  <a href="javascript:history.back();" class="btn btn-info btn-xs"><%= icon_left2 %> 戻る</a>
+</div>

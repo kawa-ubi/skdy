@@ -1,30 +1,37 @@
 <%= form_for(@cart_item) do |f| %>
-  <% if @cart_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cart_item.errors.count, "error") %> prohibited this cart_item from being saved:</h2>
+    <% if @cart_item.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@cart_item.errors.count, "error") %> prohibited this cart_item from being saved:</h2>
 
-      <ul>
-      <% @cart_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @cart_item.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <hr>
+
+    <!--<div class="cart_info">-->
+      <!--<label>選択した商品</label>-->
+      <!--<%= f.hidden_field :menu_id, :"data-js-bind-menu-id" => "true" %>-->
+      <!--<div class="img img--m <%= @cart_item.menu.image_css_class %>"></div>-->
+      <!--<%= f.number_field :amount, :value => 9 %>-->
+      <!--<%= f.hidden_field :cart_id, :value => 1 %>-->
+    <!--</div>-->
+
+
+    <tr>
+      <td><div class="img img--ss <%= @cart_item.menu.image_css_class %>"></div></td>
+      <td><div class="name"><%= @cart_item.menu.name %></div></td>
+      <td><div class="price"><%= @cart_item.menu.display_price %></div></td>
+      <td><div><%= @cart_item.amount %></div></td>
+      <td><%= link_to icon_delete + ' 削除', @cart_item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info btn-sm' %></td>
+    </tr>
+
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
-  <% end %>
-
-  <%= render partial: "menus/index", locals: {menus: @menus} %>
-
-  <hr>
-
-  <div class="field">
-    <label>選択した商品</label>
-    <%= f.text_field :menu_id, :"data-js-bind-menu-id" => "true" %>
-
-    <%= f.number_field :amount, :value => 9 %>
-    <%= f.hidden_field :cart_id, :value => 1 %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

@@ -1,13 +1,21 @@
-<h1>かーとの中身</h1>
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="navbar-brand">カート</div>
+    </div>
+  </div>
+</nav>
 
-<table>
+<table class="cart_info">
   <tbody>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= cart_item.cart %></td>
-        <td><%= link_to '詳細', cart_item %></td>
-        <td><%= link_to '編集', edit_cart_item_path(cart_item) %></td>
-        <td><%= link_to '削除', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><div class="img img--ss <%= cart_item.menu.image_css_class %>"></div></td>
+        <td><div class="name"><%= cart_item.menu.name %></div></td>
+        <td><div class="price"><%= cart_item.menu.display_price %></div></td>
+        <td><div><%= cart_item.amount %></div></td>
+        <td><%= link_to icon_pencil + ' 編集', edit_cart_item_path(cart_item), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to icon_delete + ' 削除', cart_item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -15,4 +23,3 @@
 
 <br>
 
-<%= link_to 'New Cart item', new_cart_item_path %>

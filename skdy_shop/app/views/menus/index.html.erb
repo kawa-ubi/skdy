@@ -1,7 +1,14 @@
-<h1>Listing menus</h1>
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="navbar-brand">メニュー</div>
+    </div>
+  </div>
+</nav>
 
 <%= render partial: "menus/index", locals: {menus: @menus} %>
 
 <br>
+<br>
+<br>
 
-<%= link_to 'New Menu', new_menu_path %>

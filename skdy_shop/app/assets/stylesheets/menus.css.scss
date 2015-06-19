@@ -2,6 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.menu_image:hover {
-  background: #ff9999;
+@import '_mixins';
+
+.menu_info:hover {
+  background: #f6ffd6;
+}
+.menu_info {
+  margin: 20px 10px 20px 0;
+  padding: 10px 0;
+  border-bottom: 1px dotted #eee;
+  width: 45%;
+
+  .price {
+    color: black;
+    font-weight: bold;
+  }
+  .stocks {
+    margin-left: 10px;
+    color: #999;
+    font-size: 85%;
+    font-weight: normal;
+  }
+  .name {
+    color: #6a430a;
+    font-weight: bold;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @include menu_image;
 }
