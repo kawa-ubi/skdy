@@ -1,32 +1,28 @@
-<%
-   _item = @cart_item
-   cart_item ||= _item
-   @cart_item = cart_item
-%>
+<% @cart_item = (cart_item ||= @cart_item) %>
 <%= form_for(@cart_item) do |f| %>
-    <% if @cart_item.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@cart_item.errors.count, "error") %> prohibited this cart_item from being saved:</h2>
-          <ul>
-            <% @cart_item.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <ul class="row list-inline cart_info">
-      <li class="col-sm-1"><div class="img img--ss <%= @cart_item.menu.image_css_class %>"></div></li>
-      <li class="col-sm-6"><div class="name"><%= @cart_item.menu.name %></div></li>
-      <li class="col-sm-2"><div class="price text-right"><%= @cart_item.menu.display_price %></div></li>
-      <li class="col-sm-1"><div><%= f.text_field :amount , {class: '', maxlength: 6} %></div></li>
-      <li class="col-sm-1">
-        <%= button_tag( class: "btn btn-success btn-sm", type: 'submit') do %>
-            <%= icon_update '更新' %>
+  <% if @cart_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cart_item.errors.count, "error") %> prohibited this cart_item from being saved:</h2>
+      <ul>
+        <% @cart_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
-      </li>
-      <li class="col-sm-1">
-        <%= link_to icon_delete + '削除', @cart_item, method: :delete, data: { confirm: 'ほんまに削除しますのん？' }, class: 'btn btn-warning btn-sm' %>
-      </li>
-    </ul>
+      </ul>
+    </div>
+  <% end %>
+
+  <ul class="row list-inline cart_info">
+    <li class="col-sm-1"><div class="img img--ss <%= @cart_item.menu.image_css_class %>"></div></li>
+    <li class="col-sm-6 name--container" data-notice-id="<%= @cart_item.id %>" ><div class="name"><%= @cart_item.menu.name %></div></li>
+    <li class="col-sm-2 price--container"><div class="price text-right"><%= @cart_item.menu.display_price %></div></li>
+    <li class="col-sm-1 amount--container"><div><%= f.text_field :amount , {class: '', maxlength: 6} %></div></li>
+    <li class="col-sm-1 btn--container">
+      <%= button_tag( class: "btn btn-success btn-sm", type: 'submit') do %>
+        <%= icon_update '更新' %>
+      <% end %>
+    </li>
+    <li class="col-sm-1 btn--container">
+      <%= link_to icon_delete + '削除', @cart_item, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-warning btn-sm' %>
+    </li>
+  </ul>
 <% end %>

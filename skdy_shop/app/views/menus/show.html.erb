@@ -1,27 +1,37 @@
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="navbar-brand"><%= icon_info %> メニュー詳細</div>
+    </div>
+  </div>
+</nav>
+
 <p id="notice"><%= notice %></p>
 
-<div class="menu_info">
-  <p>
-    <strong>名称：</strong>
-    <span class="name"><%= @menu.name %></span>
-  </p>
-
+<div class="col-sm-12">
   <div class="menu_info">
-    <div class="img img--l <%= @menu.image_css_class %>"></div>
+    <p>
+      <strong>名称：</strong>
+      <span class="name"><%= @menu.name %></span>
+    </p>
+
+    <div class="menu_info">
+      <div class="img img--l <%= @menu.image_css_class %>"></div>
+    </div>
+
+    <p>
+      <strong>価格：</strong>
+      <span class="price"><%= @menu.display_price %></span>
+    </p>
+
+    <p class="stocks">
+      <strong>在庫：</strong>
+      <span class="stocks"><%= @menu.stocks %>個</span>
+    </p>
+
+    <%= link_to icon_pencil + ' 編集する', edit_menu_path(@menu), class: 'btn btn-success btn-xs' %>
+    <%= link_to icon_list + ' メニューリスト', menus_path, class: 'btn btn-primary btn-xs' %>
+
+    <a href="javascript:history.back();" class="btn btn-info btn-xs"><%= icon_left2 %> 戻る</a>
   </div>
-
-  <p>
-    <strong>価格：</strong>
-    <span class="price"><%= @menu.display_price %></span>
-  </p>
-
-  <p class="stocks">
-    <strong>在庫：</strong>
-    <span class="stocks"><%= @menu.stocks %>個</span>
-  </p>
-
-  <%= link_to icon_pencil + ' 編集する', edit_menu_path(@menu), class: 'btn btn-success btn-xs' %>
-  <%= link_to icon_list + ' メニューリスト', menus_path, class: 'btn btn-primary btn-xs' %>
-
-  <a href="javascript:history.back();" class="btn btn-info btn-xs"><%= icon_left2 %> 戻る</a>
 </div>

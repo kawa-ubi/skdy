@@ -4,26 +4,31 @@
       <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
 
       <ul>
-      <% @menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @menu.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
+
+  <p>
+    <strong>名称：</strong>
+    <%= f.text_field :name, maxlength: 50 %>
+  </p>
+  <P>
+    <div class="img img--l <%= @menu.image_css_class %>"></div>
+  </P>
+  <p>
+    <strong>価格：</strong>
     <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :stocks %><br>
+  </p>
+  <p>
+    <strong>在庫：</strong>
     <%= f.number_field :stocks %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </p>
+  <%= f.submit %>
+  <br>
+  <br>
+
 <% end %>

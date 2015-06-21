@@ -1,5 +1,3 @@
-require 'pp'
-
 class CartItemsController < ApplicationController
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
 
@@ -15,7 +13,6 @@ class CartItemsController < ApplicationController
   # GET /cart_items/new
   def new
     @cart_item = CartItem.new
-
     @menus = Menu.all
   end
 
@@ -29,7 +26,9 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
 
     if @cart_item.save
-      redirect_to @cart_item, notice: 'Cart item was successfully created.'
+      flash[:id] = @cart_item.id
+      flash[:type] = 'created'
+      redirect_to cart_items_url, notice: 'カートに追加しました'
     else
       render :new
     end
@@ -38,7 +37,9 @@ class CartItemsController < ApplicationController
   # PATCH/PUT /cart_items/1
   def update
     if @cart_item.update(cart_item_params)
-      redirect_to @cart_item, notice: 'Cart item was successfully updated.'
+      flash[:id] = @cart_item.id
+      flash[:type] = 'updated'
+      redirect_to cart_items_url, notice: 'カートを更新しました'
     else
       render :edit
     end
@@ -47,7 +48,9 @@ class CartItemsController < ApplicationController
   # DELETE /cart_items/1
   def destroy
     @cart_item.destroy
-    redirect_to cart_items_url, notice: 'Cart item was successfully destroyed.'
+    flash[:id] = 0
+    flash[:type] = 'deleted'
+    redirect_to cart_items_url, notice: '削除しました'
   end
 
   private

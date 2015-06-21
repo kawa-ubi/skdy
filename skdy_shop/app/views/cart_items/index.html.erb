@@ -6,26 +6,12 @@
   </div>
 </nav>
 
-<!--<table class="cart_info">-->
-  <!--<tbody>-->
-    <!--<% @cart_items.each do |cart_item| %>-->
-      <!--<tr>-->
-        <!--<td><div class="img img--ss <%= cart_item.menu.image_css_class %>"></div></td>-->
-        <!--<td><div class="name"><%= cart_item.menu.name %></div></td>-->
-        <!--<td><div class="price"><%= cart_item.menu.display_price %></div></td>-->
-        <!--<td><div><%= cart_item.amount %></div></td>-->
-        <!--<td><%= link_to icon_pencil + ' 編集', edit_cart_item_path(cart_item), class: 'btn btn-success btn-sm' %></td>-->
-        <!--<td><%= link_to icon_delete + ' 削除', cart_item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info btn-sm' %></td>-->
-      <!--</tr>-->
-    <!--<% end %>-->
-  <!--</tbody>-->
-<!--</table>-->
-
+<input type="hidden" id="flash" data-id='<%= flash[:id] %>' data-notice='<%= flash[:notice] %>' data-type='<%= flash[:type] %>' >
+<div data-notice-deleted></div>
 <div>
   <% @cart_items.each do |cart_item| %>
-      <%= render partial: 'form', locals: {cart_item: cart_item} %>
+    <%= render partial: 'form', locals: {cart_item: cart_item} %>
   <% end %>
 </div>
 
 <br>
-
